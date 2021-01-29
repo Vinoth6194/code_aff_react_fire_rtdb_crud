@@ -3,6 +3,8 @@ import ContactForm from "./ContactForm";
 import firebaseDb from "../firebase_config";
 function Contacts() {
   const [contactObjects, setContactObjects] = useState({});
+  const [currentId, setCurrentId] = useState("");
+
   useEffect(() => {
     firebaseDb.child("contacts").on("value", (snapshot) => {
       console.log(snapshot.val());
@@ -48,7 +50,13 @@ function Contacts() {
                     <td>{contactObjects[id].email}</td>
                     <td>
                       <a className="btn text-primary">
-                        <i className="fas fa-pencil-alt"></i>
+                        <i
+                          className="fas fa-pencil-alt"
+                          onClick={() => {
+                            setCurrentId(id);
+                            console.log(id);
+                          }}
+                        ></i>
                       </a>
                       <a className="btn text-danger">
                         <i className="fas fa-trash-alt"></i>
