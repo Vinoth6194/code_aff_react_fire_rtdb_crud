@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function ContactForm() {
+function ContactForm(props) {
   const initialFieldValues = {
     fullName: "",
     mobile: "",
@@ -17,6 +17,11 @@ function ContactForm() {
     });
     console.log(values);
   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    props.addOrEdit(values);
+  };
+
   return (
     <form autoComplete="off">
       <div className="form-group input-group">
