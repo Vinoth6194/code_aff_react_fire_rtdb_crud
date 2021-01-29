@@ -55,6 +55,19 @@ function ContactForm() {
           />
         </div>
       </div>
+      <div className="form-group">
+        <textarea
+          className="form-control"
+          name="address"
+          placeholder="Address"
+          value={values.address}
+        />
+      </div>
+      <div className="form-group">
+        <button className="btn btn-primary btn-block" type="submit">
+          Save
+        </button>
+      </div>
     </form>
   );
 }
