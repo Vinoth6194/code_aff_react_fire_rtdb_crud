@@ -29,7 +29,7 @@ function Contacts() {
       </div>
       <div className="row">
         <div className="col-md-5">
-          <ContactForm addOrEdit={addOrEdit} />
+          <ContactForm {...{ addOrEdit, currentId, contactObjects }} />
         </div>
         <div className="col-md-7">
           <table className="table table-borderless table-striped">
