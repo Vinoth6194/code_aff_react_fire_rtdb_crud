@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ContactForm from "./ContactForm";
 import firebaseDb from "../firebase_config";
 function Contacts() {
+  const [contactObjects, setContactObjects] = useState({});
+  useEffect(() => {
+    firebaseDb.child("contacts").on("value", (snapshot) => {
+      console.log(snapshot.val());
+      setContactObjects({
+         ...snapshot.val();
+      })
+    });
+  }, []);
   const addOrEdit = (obj) => {
     firebaseDb.child("contacts").push(obj, (err) => {
       if (err) {
