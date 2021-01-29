@@ -42,7 +42,7 @@ function Contacts() {
             <tbody>
               {Object.keys(contactObjects).map((id) => {
                 return (
-                  <tr>
+                  <tr key={id}>
                     <td>{contactObjects[id].fullName}</td>
                     <td>{contactObjects[id].mobile}</td>
                     <td>{contactObjects[id].email}</td>
