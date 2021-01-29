@@ -8,13 +8,15 @@ function ContactForm() {
     address: "",
   };
 
+  const [values, setValues] = useState(initialFieldValues);
   const handleInputChange = (e) => {
-    var [name, value] = e.target;
+    var { name, value } = e.target;
     setValues({
+      ...values,
       [name]: value,
     });
+    console.log(values);
   };
-  const [values, setValues] = useState(initialFieldValues);
   return (
     <form autoComplete="off">
       <div className="form-group input-group">
