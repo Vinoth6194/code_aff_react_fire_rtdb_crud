@@ -8,9 +8,11 @@ function Contacts() {
   useEffect(() => {
     firebaseDb.child("contacts").on("value", (snapshot) => {
       console.log(snapshot.val());
-      setContactObjects({
-        ...snapshot.val(),
-      });
+      if (snapshot.val() != null)
+        setContactObjects({
+          ...snapshot.val(),
+        });
+      else setContactObjects({});
     });
   }, []);
 
@@ -27,6 +29,15 @@ function Contacts() {
           console.log(err);
         }
       });
+  };
+
+  const onDelete = (key) => {
+    if (window.confirm("Delete?")) {
+      firebaseDb.child(`contacts/${key}`).remove((err) => {
+        if (err) console.log(err);
+        else setCurrentId();
+      });
+    }
   };
   return (
     <>
@@ -69,7 +80,14 @@ function Contacts() {
                           }}
                         ></i>
                       </a>
-                      <a className="btn text-danger">
+                      <a
+                        className="btn text-danger"
+                        onClick={() => {
+                          console.log(id);
+
+                          onDelete(id);
+                        }}
+                      >
                         <i className="fas fa-trash-alt"></i>
                       </a>
                     </td>
