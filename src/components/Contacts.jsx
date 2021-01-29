@@ -46,7 +46,14 @@ function Contacts() {
                     <td>{contactObjects[id].fullName}</td>
                     <td>{contactObjects[id].mobile}</td>
                     <td>{contactObjects[id].email}</td>
-                    <td></td>
+                    <td>
+                      <a className="btn text-primary">
+                        <i className="fas fa-pencil-alt"></i>
+                      </a>
+                      <a className="btn text-danger">
+                        <i className="fas fa-trash-alt"></i>
+                      </a>
+                    </td>
                   </tr>
                 );
               })}
