@@ -95,7 +95,7 @@ const ContactForm = (props) => {
       </div>
       <div className="form-group">
         <button className="btn btn-primary btn-block" type="submit">
-          Save
+          {props.currentId == "" ? "Save" : "Update"}
         </button>
       </div>
     </form>
