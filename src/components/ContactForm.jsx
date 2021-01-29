@@ -8,6 +8,12 @@ function ContactForm() {
     address: "",
   };
 
+  const handleInputChange = (e) => {
+    var [name, value] = e.target;
+    setValues({
+      [name]: value,
+    });
+  };
   const [values, setValues] = useState(initialFieldValues);
   return (
     <form autoComplete="off">
@@ -23,6 +29,7 @@ function ContactForm() {
           placeholder="Full Name"
           value={values.fullName}
           name="fullName"
+          onChange={handleInputChange}
         />
       </div>
       <div className="form-row">
@@ -38,6 +45,7 @@ function ContactForm() {
             placeholder="Mobile"
             value={values.mobile}
             name="mobile"
+            onChange={handleInputChange}
           />
         </div>
         <div className="form-group input-group col-md-6">
@@ -52,6 +60,7 @@ function ContactForm() {
             placeholder="Email"
             value={values.email}
             name="email"
+            onChange={handleInputChange}
           />
         </div>
       </div>
@@ -61,6 +70,7 @@ function ContactForm() {
           name="address"
           placeholder="Address"
           value={values.address}
+          onChange={handleInputChange}
         />
       </div>
       <div className="form-group">
