@@ -30,6 +30,9 @@ function Contacts() {
       <div className="row">
         <div className="col-md-5">
           <ContactForm {...{ addOrEdit, currentId, contactObjects }} />
+          {/* <ContactForm
+            {...{ currentId, contactObjects, addOrEdit }}
+          ></ContactForm> */}
         </div>
         <div className="col-md-7">
           <table className="table table-borderless table-striped">

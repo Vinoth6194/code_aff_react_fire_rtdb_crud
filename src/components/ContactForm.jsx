@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-function ContactForm(props) {
+const ContactForm = (props) => {
   const initialFieldValues = {
     fullName: "",
     mobile: "",
@@ -9,6 +9,19 @@ function ContactForm(props) {
   };
 
   const [values, setValues] = useState(initialFieldValues);
+  //   useEffect(() => {
+  //     if (props.currentId == " ") setValues({ ...initialFieldValues });
+  //     else setValues({ ...props.contactObjects });
+  //   }, [props.currentId, props.contactObjects]);
+
+  useEffect(() => {
+    if (props.currentId == "") setValues({ ...initialFieldValues });
+    else
+      setValues({
+        ...props.contactObjects[props.currentId],
+      });
+  }, [props.currentId, props.contactObjects]);
+
   const handleInputChange = (e) => {
     var { name, value } = e.target;
     setValues({
@@ -87,6 +100,6 @@ function ContactForm(props) {
       </div>
     </form>
   );
-}
+};
 
 export default ContactForm;
