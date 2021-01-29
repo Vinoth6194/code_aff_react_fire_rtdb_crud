@@ -7,8 +7,8 @@ function Contacts() {
     firebaseDb.child("contacts").on("value", (snapshot) => {
       console.log(snapshot.val());
       setContactObjects({
-         ...snapshot.val();
-      })
+        ...snapshot.val(),
+      });
     });
   }, []);
   const addOrEdit = (obj) => {
