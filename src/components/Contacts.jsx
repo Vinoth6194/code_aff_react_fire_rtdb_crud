@@ -1,7 +1,14 @@
 import React from "react";
 import ContactForm from "./ContactForm";
-
+import firebaseDb from "../firebase_config";
 function Contacts() {
+  const addOrEdit = (obj) => {
+    firebaseDb.child("contacts").push(obj, (err) => {
+      if (err) {
+        console.log(err);
+      }
+    });
+  };
   return (
     <>
       <div className="jumbotron jumbotron-fluid">
@@ -11,7 +18,7 @@ function Contacts() {
       </div>
       <div className="row">
         <div className="col-md-5">
-          <ContactForm />
+          <ContactForm addOrEdit={addOrEdit} />
         </div>
         <div className="col-md-7">Contacts list </div>
       </div>

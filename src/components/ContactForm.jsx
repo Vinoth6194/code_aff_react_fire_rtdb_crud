@@ -23,7 +23,7 @@ function ContactForm(props) {
   };
 
   return (
-    <form autoComplete="off">
+    <form autoComplete="off" onSubmit={handleSubmit}>
       <div className="form-group input-group">
         <div className="input-group-prepend">
           <div className="input-group-text">
